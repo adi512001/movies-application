@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Container, Title, Method, Path, Subtitle, SubtitleText, Seperator, HeaderTabs, HeaderTab } from "./HeaderStyles";
+import { Wrapper, Container, Title, Method, Path, Subtitle, SubtitleText, Seperator, HeaderTabs, HeaderTab } from "./HeaderStyles";
 
 
 interface Props {
@@ -17,25 +17,27 @@ const Header = ( { method, path, apiName, activeTab, setActiveTab }: Props ) => 
   };
   
   return (
-    <Container>
-       <Title>
-        <Method>{method}</Method>
-        <Path>{path}</Path>
-       </Title>
-       <Subtitle>
-        <SubtitleText bold>{`All APIs > `}</SubtitleText>
-        <SubtitleText bold>{`${apiName} > `}</SubtitleText>
-        <SubtitleText bold={false}>{path?.slice(1)}</SubtitleText>
-       </Subtitle>
-       <Seperator />
-        <HeaderTabs 
-          value={activeTab} 
-          onChange={handleChange} 
-        >
-          <HeaderTab label="Request" />
-          <HeaderTab label="Response" />
-        </HeaderTabs>
-    </Container>
+    <Wrapper>
+      <Container>
+        <Title>
+          <Method>{method}</Method>
+          <Path>{path}</Path>
+        </Title>
+        <Subtitle>
+          <SubtitleText bold>{`All APIs > `}</SubtitleText>
+          <SubtitleText bold>{`${apiName} > `}</SubtitleText>
+          <SubtitleText bold={false}>{path?.slice(1)}</SubtitleText>
+        </Subtitle>
+        <Seperator />
+          <HeaderTabs 
+            value={activeTab} 
+            onChange={handleChange} 
+          >
+            <HeaderTab label="Request" />
+            <HeaderTab label="Response" />
+          </HeaderTabs>
+      </Container>
+    </Wrapper>
   );
 }
 

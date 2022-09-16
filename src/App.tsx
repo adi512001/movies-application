@@ -1,5 +1,5 @@
 import React from 'react';
-import RouteDetails from "./containers/RouteDetails";
+import RouteDetails from "./containers/RouteDetails/RouteDetails";
 import './App.css';
 
 function App() {

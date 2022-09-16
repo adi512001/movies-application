@@ -10,11 +10,15 @@ type SubtitleTextProps = {
     bold: boolean;
 };
 
+const Wrapper = styled.div`
+  border-bottom: 2px solid ${grey};
+  background-color: white;
+`;
 const Container = styled.div`
   display: flex;
   flex-direction: column;
   gap: 15px;
-  margin: 25px;
+  margin: 25px 25px 0px 25px;
 `;
 
 const Title = styled.div`
@@ -67,4 +71,4 @@ const HeaderTab = styled(Tab)`
   }
 `;
 
-export { Container, Title, Method, Path, Subtitle, SubtitleText, Seperator, HeaderTabs, HeaderTab };
+export { Wrapper, Container, Title, Method, Path, Subtitle, SubtitleText, Seperator, HeaderTabs, HeaderTab };
