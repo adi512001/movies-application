@@ -1,5 +1,6 @@
 import React from 'react';
 import { Wrapper, Header, Content } from "./TableGroupStyles";
+import { TableRow } from '../../containers/RouteDetails/RouteDetails';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faCaretRight,
@@ -8,21 +9,25 @@ import {
 
 interface Props {
     visible: boolean;
+    title: string;
+    rows: TableRow[];
 }
 
-const TableGroup = ({ visible }: Props) => {
+const TableGroup = ({ visible, title, rows }: Props) => {
   return (
     <Wrapper>
         <Header>
             <FontAwesomeIcon icon={visible ? faCaretDown : faCaretRight} />
-            <>title</>
+            <>{title}</>
         </Header>
-        <Content>
-            <span>hi</span>
-            <span>hi</span>
-            <span>hi</span>
-            <span>hi</span>
+        {rows?.map(row => 
+        <Content key={row.name}>
+            <>{row.name}</>
+            <>{row.pii}</>
+            <>{row.masked}</>
+            <>{row.type}</>
         </Content>
+        )}
     </Wrapper>
   );
 }
