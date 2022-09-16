@@ -1,7 +1,13 @@
 import styled from "styled-components";
 import Checkbox from '@mui/material/Checkbox';
 
+const darkPurple = "#6A1B9A";
 const grey = "#F0F0F0";
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
 
 const Wrapper = styled.div`
   background-color: white;
@@ -58,4 +64,13 @@ const Text = styled.span`
   align-self: center;
 `;
 
-export { Wrapper, Search, Input, ApplyButton, Filters, PIIFilter, PIICheckbox, Text };
+const ResetButton = styled.span`
+  color: ${darkPurple};
+  cursor: pointer;
+  align-self: flex-end;
+  margin-right: 25px;
+  font-size: 14px;
+  margin-top: 5px;
+`;
+
+export { Container, Wrapper, Search, Input, ApplyButton, Filters, PIIFilter, PIICheckbox, Text, ResetButton };

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Wrapper, Search, Input, ApplyButton, Filters, PIIFilter, PIICheckbox, Text } from "./SearchBoxStyles";
+import { Container, Wrapper, Search, Input, ApplyButton, Filters, PIIFilter, PIICheckbox, Text, ResetButton } from "./SearchBoxStyles";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faSearch,
@@ -12,19 +12,22 @@ interface Props {
 
 const SearchBox = ({ piiOnly, handleChange }: Props) => {
   return (
-    <Wrapper>
-        <Search>
-            <FontAwesomeIcon icon={faSearch} color="#676767" />
-            <Input placeholder='Search'/>
-        </Search>
-        <Filters>
-            <PIIFilter>
-              <PIICheckbox checked={piiOnly} onChange={handleChange} sx={{ '& .MuiSvgIcon-root': { fontSize: 18 } }} />
-              <Text>Show PII only</Text>
-            </PIIFilter>
-            <ApplyButton>Apply</ApplyButton>
-        </Filters>
-    </Wrapper>
+    <Container>
+      <Wrapper>
+          <Search>
+              <FontAwesomeIcon icon={faSearch} color="#676767" />
+              <Input placeholder='Search'/>
+          </Search>
+          <Filters>
+              <PIIFilter>
+                <PIICheckbox checked={piiOnly} onChange={handleChange} sx={{ '& .MuiSvgIcon-root': { fontSize: 18 } }} />
+                <Text>Show PII only</Text>
+              </PIIFilter>
+              <ApplyButton>Apply</ApplyButton>
+          </Filters>
+      </Wrapper>
+      <ResetButton>Reset Filter</ResetButton>
+    </Container>
   );
 }
 
