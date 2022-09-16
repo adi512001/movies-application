@@ -54,7 +54,7 @@ const SubtitleText = styled.span<SubtitleTextProps>`
 `;
 
 const Seperator = styled.span`
-  border-bottom: 1px solid ${grey};
+  border-bottom: 2px solid ${grey};
   padding-top: 10px;
   display: block;
 `;
