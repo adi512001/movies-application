@@ -1,16 +1,13 @@
 import React from 'react';
-import { Wrapper, TableHeader } from "./TableStyles";
+import { Wrapper, TableHeaderContainer, TableHeader } from "./TableStyles";
 
 const Table = () => {
-  
+  const tableHeaders = ["name", "pii", "masking", "type"];
   return (
     <Wrapper>
-        <TableHeader>
-            <span>Name</span>
-            <span>pii</span>
-            <span>masking</span>
-            <span>type</span>
-        </TableHeader>
+        <TableHeaderContainer>
+            {tableHeaders.map(header => <TableHeader>{header}</TableHeader>)}
+        </TableHeaderContainer>
     </Wrapper>
   );
 }
