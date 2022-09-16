@@ -24,7 +24,7 @@ const TableContent = styled.div`
   display: flex;
   flex-direction: column;
   gap: 10px;
-  height: 90%;
+  max-height: 90%;
   overflow: auto;
   padding: 15px;
 `;

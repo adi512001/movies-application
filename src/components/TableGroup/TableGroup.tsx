@@ -20,14 +20,16 @@ const TableGroup = ({ visible, title, rows }: Props) => {
             <FontAwesomeIcon icon={visible ? faCaretDown : faCaretRight} />
             <>{title}</>
         </Header>
-        {rows?.map(row => 
-        <Content key={row.name}>
-            <>{row.name}</>
-            <>{row.pii}</>
-            <>{row.masked}</>
-            <>{row.type}</>
-        </Content>
-        )}
+        <>
+            {rows?.map(row => 
+            <Content key={row.name}>
+                <>{row.name}</>
+                <>{row.pii}</>
+                <>{row.masked}</>
+                <>{row.type}</>
+            </Content>
+            )}
+        </>
     </Wrapper>
   );
 }
