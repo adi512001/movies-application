@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Wrapper, Container, Title, Method, Path, Subtitle, SubtitleText, Seperator, HeaderTabs, HeaderTab } from "./HeaderStyles";
-
 
 interface Props {
     method: string;

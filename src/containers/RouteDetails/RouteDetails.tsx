@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
 import Header from "../../components/Header/Header";
-import { Wrapper, SearchBox, Search, Input, ApplyButton, Filters, PIIFilter, PIICheckbox, Text } from "./RouteDetailsStyles";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faSearch,
-} from "@fortawesome/free-solid-svg-icons";
+import Table from "../../components/Table/Table";
+import { Wrapper } from "./RouteDetailsStyles";
 import data from '../../data/fe_data.json';
+import SearchBox from '../../components/SearchBox/SearchBox';
 
 const RouteDetails = () => {
   const [activeTab, setActiveTab] = useState(0);
@@ -23,19 +21,10 @@ const RouteDetails = () => {
           activeTab={activeTab}
           setActiveTab={setActiveTab}
         />
-        <SearchBox>
-          <Search>
-            <FontAwesomeIcon icon={faSearch} color="#676767" />
-            <Input placeholder='Search'/>
-          </Search>
-          <Filters>
-            <PIIFilter>
-              <PIICheckbox checked={piiOnly} onChange={handleChange} sx={{ '& .MuiSvgIcon-root': { fontSize: 18 } }} />
-              <Text>Show PII only</Text>
-            </PIIFilter>
-            <ApplyButton>Apply</ApplyButton>
-          </Filters>
-        </SearchBox>
+        <SearchBox piiOnly={piiOnly} handleChange={handleChange} />
+        <Table
+          
+        />
     </Wrapper>
   );
 }
