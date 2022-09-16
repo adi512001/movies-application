@@ -37,11 +37,6 @@ const RouteDetails = () => {
     setTabData(data?.response);
   }, [activeTab])
 
-  useEffect(() => {
-    console.log(tabData);
-    
-  }, [tabData])
-
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setPiiOnly(event.target.checked);
   };

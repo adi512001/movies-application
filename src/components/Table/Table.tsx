@@ -27,7 +27,7 @@ const Table = ({ tabData }: Props) => {
             {tableHeaders.map(header => <TableHeader key={header}>{header}</TableHeader>)}
         </TableHeaderContainer>
         <TableContent>
-            {Object.keys(tabData).map(group => <TableGroup key={group} title={group} rows={tabData[group as keyof ResponseData]} visible={false} />)}
+            {Object.keys(tabData).map(group => <TableGroup key={group} title={group} rows={tabData[group as keyof ResponseData]} />)}
         </TableContent>
     </Wrapper>
   );
