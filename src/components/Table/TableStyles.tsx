@@ -20,4 +20,13 @@ const TableHeader = styled.span`
   font-size: 14px;
 `;
 
-export { Wrapper, TableHeaderContainer, TableHeader };
+const TableContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  height: 90%;
+  overflow: auto;
+  padding: 15px;
+`;
+
+export { Wrapper, TableHeaderContainer, TableHeader, TableContent };

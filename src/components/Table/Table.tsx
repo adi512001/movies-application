@@ -1,5 +1,6 @@
 import React from 'react';
-import { Wrapper, TableHeaderContainer, TableHeader } from "./TableStyles";
+import TableGroup from '../TableGroup/TableGroup';
+import { Wrapper, TableHeaderContainer, TableHeader, TableContent } from "./TableStyles";
 
 const Table = () => {
   const tableHeaders = ["name", "pii", "masking", "type"];
@@ -8,6 +9,9 @@ const Table = () => {
         <TableHeaderContainer>
             {tableHeaders.map(header => <TableHeader>{header}</TableHeader>)}
         </TableHeaderContainer>
+        <TableContent>
+            <TableGroup visible={false} />
+        </TableContent>
     </Wrapper>
   );
 }
