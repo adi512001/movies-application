@@ -40,6 +40,34 @@ const RouteDetails = () => {
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setPiiOnly(event.target.checked);
   };
+
+  const onApplyClick = (searchVal: string) => {
+    let filteredTabData = { ...tabData };
+    let group: keyof typeof tabData;
+    for (group in tabData) {
+      let filteredArray = tabData[group]?.filter(row => {
+        let shouldFilter = true;
+        if (searchVal !== "") {
+          if (row.name?.includes(searchVal) || row.type?.includes(searchVal)) {
+            shouldFilter = true;
+          } else {
+            shouldFilter = false;
+          }
+        }
+        if (piiOnly) {
+          if (row.pii) {
+            shouldFilter = true;
+          } else {
+            shouldFilter = false;
+          }
+        }
+        return shouldFilter;
+      });
+      filteredTabData[group] = filteredArray;
+    }
+    setTabData(filteredTabData);
+  };
+
   return (
     <Wrapper>
         <Header 
@@ -49,7 +77,7 @@ const RouteDetails = () => {
           activeTab={activeTab}
           setActiveTab={setActiveTab}
         />
-        <SearchBox piiOnly={piiOnly} handleChange={handleChange} />
+        <SearchBox piiOnly={piiOnly} handleChange={handleChange} onApplyClick={searchVal => onApplyClick(searchVal)} />
         <Table
           tabData={tabData}
         />

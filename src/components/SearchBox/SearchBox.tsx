@@ -7,23 +7,29 @@ import {
 
 interface Props {
     piiOnly: boolean;
-    handleChange: (event: React.ChangeEvent<HTMLInputElement>) => void
+    handleChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+    onApplyClick: (searchVal: any) => void;
 }
 
-const SearchBox = ({ piiOnly, handleChange }: Props) => {
+const SearchBox = ({ piiOnly, handleChange, onApplyClick }: Props) => {
+  const [searchValue, setSearchValue] = useState('');
+
+  const onSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchValue(event?.target?.value);
+  }
   return (
     <Container>
       <Wrapper>
           <Search>
               <FontAwesomeIcon icon={faSearch} color="#676767" />
-              <Input placeholder='Search'/>
+              <Input placeholder='Search' value={searchValue} onChange={onSearchChange} />
           </Search>
           <Filters>
               <PIIFilter>
                 <PIICheckbox checked={piiOnly} onChange={handleChange} sx={{ '& .MuiSvgIcon-root': { fontSize: 18 } }} />
                 <Text>Show PII only</Text>
               </PIIFilter>
-              <ApplyButton>Apply</ApplyButton>
+              <ApplyButton onClick={() => onApplyClick(searchValue)}>Apply</ApplyButton>
           </Filters>
       </Wrapper>
       <ResetButton>Reset Filter</ResetButton>
