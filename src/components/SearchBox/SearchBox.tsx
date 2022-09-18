@@ -37,9 +37,7 @@ const SearchBox = ({ piiOnly, setPiiOnly, handleChange, onApplyClick }: Props) =
                   checked={piiOnly} 
                   onChange={handleChange} 
                   sx={{ 
-                    '& .MuiSvgIcon-root': { fontSize: 18 },
                    "&:hover": { backgroundColor: "#7b1fa20a" },
-                   "& .MuiSvgIcon-root Mui-checked": { color: "#6A1B9A" }
                   }} 
                 />
                 <Text>Show PII only</Text>

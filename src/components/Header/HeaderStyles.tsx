@@ -66,10 +66,10 @@ const HeaderTabs = styled(Tabs)`
   }
   .MuiButtonBase-root {
     text-transform: capitalize;
+    font-weight: bold;
   }
   .MuiButtonBase-root.Mui-selected {
     color: ${darkPurple};
-    font-weight: bold;
   }
 `;
 
