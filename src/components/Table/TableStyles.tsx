@@ -4,7 +4,7 @@ const darkGrey = "#DFDFDF";
 const Wrapper = styled.div`
   background-color: white;
   margin: 0 25px;
-  height: 100%;
+  max-height: 65vh;
 `;
 const TableHeaderContainer = styled.div`
   display: grid;
@@ -23,8 +23,8 @@ const TableHeader = styled.span`
 const TableContent = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  max-height: 90%;
+  gap: 30px;
+  height: 56vh;
   overflow: auto;
   padding: 15px;
 `;
