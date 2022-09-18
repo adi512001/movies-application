@@ -13,7 +13,7 @@ interface Props {
 }
 
 const TableGroup = ({ title, rows }: Props) => {
-    const [visible, setVisible] = useState(false);
+    const [visible, setVisible] = useState(false);    
 
     const onArrowClick = () => {
         setVisible(!visible);
@@ -27,10 +27,10 @@ const TableGroup = ({ title, rows }: Props) => {
         {visible && <>
             {rows?.map(row => 
             <Content key={row.name}>
-                <>{row.name}</>
-                <>{row.pii}</>
-                <>{row.masked}</>
-                <>{row.type}</>
+                <span>{row.name}</span>
+                <span>{row.pii}</span>
+                <span>{row.masked}</span>
+                <span>{row.type}</span>
             </Content>
             )}
         </>}
