@@ -1,10 +1,16 @@
 import styled from "styled-components";
-const darkGrey = "#DFDFDF";
+const grey = "#e0e0e0";
+const darkGrey = "#d3d3d3";
+
+interface TableHeaderProps {
+  header: string;
+}
 
 const Wrapper = styled.div`
   background-color: white;
   margin: 0 25px;
   max-height: 65vh;
+  box-shadow: 0px 0px 2px 0px ${grey};
 `;
 const TableHeaderContainer = styled.div`
   display: grid;
@@ -13,11 +19,12 @@ const TableHeaderContainer = styled.div`
   padding: 15px;
 `;
 
-const TableHeader = styled.span`
+const TableHeader = styled.span<TableHeaderProps>`
   color: #AB47BC;
   font-weight: bold;
   text-transform: uppercase;
   font-size: 14px;
+  padding-left: ${props => props?.header === "name" ? "30px" : "0"};
 `;
 
 const TableContent = styled.div`

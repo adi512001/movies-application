@@ -2,7 +2,7 @@ import styled from "styled-components";
 import Checkbox from '@mui/material/Checkbox';
 
 const darkPurple = "#6A1B9A";
-const grey = "#F0F0F0";
+const grey = "#e0e0e0";
 
 const Container = styled.div`
   display: flex;
@@ -11,6 +11,7 @@ const Container = styled.div`
 
 const Wrapper = styled.div`
   background-color: white;
+  box-shadow: 0px 0px 2px 2px ${grey};
   margin: 0px 25px;
   display: flex;
   flex-direction: row;
@@ -57,10 +58,10 @@ const PIIFilter = styled.div`
 `;
 
 const PIICheckbox = styled(Checkbox)`
-.MuiSvgIcon-root {
-  font-size: 18px;
-}
-color: ${darkPurple} !important;
+  .MuiSvgIcon-root {
+    font-size: 18px;
+    color: ${darkPurple}
+  }
 `;
 
 const Text = styled.span`

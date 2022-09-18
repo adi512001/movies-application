@@ -4,14 +4,14 @@ import Tab from '@mui/material/Tab';
 
 const purple = "#BE70CB";
 const darkPurple = "#6A1B9A";
-const grey = "#F0F0F0";
+const grey = "#e0e0e0";
 
 type SubtitleTextProps = {
     bold: boolean;
 };
 
 const Wrapper = styled.div`
-  border-bottom: 2px solid ${grey};
+  box-shadow: 0 4px 2px -2px ${grey};
   background-color: white;
 `;
 const Container = styled.div`
@@ -54,7 +54,7 @@ const SubtitleText = styled.span<SubtitleTextProps>`
 `;
 
 const Seperator = styled.span`
-  border-bottom: 2px solid ${grey};
+  border-bottom: 1px solid ${grey};
   padding-top: 10px;
   display: block;
 `;

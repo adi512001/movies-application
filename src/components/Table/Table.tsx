@@ -43,7 +43,7 @@ const Table = ({ tabData, setTabData }: Props) => {
   return (
     <Wrapper>
         <TableHeaderContainer>
-            {tableHeaders.map(header => <TableHeader key={header}>{header}</TableHeader>)}
+            {tableHeaders.map(header => <TableHeader key={header} header={header}>{header}</TableHeader>)}
         </TableHeaderContainer>
         <TableContent>
             {Object.keys(tabData).map(group => 

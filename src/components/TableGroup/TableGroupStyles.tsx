@@ -1,5 +1,5 @@
 import styled from "styled-components";
-const grey = "#F0F0F0";
+const grey = "#f0f0f0";
 const arrowBackground = "#EEEEEE";
 const darkPurple = "#7B1FA2";
 
@@ -29,7 +29,7 @@ const IconWrapper = styled.span`
 `;
 
 const Content = styled.div`
-  box-shadow: 0px 5px 10px ${grey};
+  box-shadow: 1px 1px 0px 2px ${grey};
   padding: 25px;
   display: grid;
   grid-template-columns: 2fr 0.5fr 4fr 1fr;
