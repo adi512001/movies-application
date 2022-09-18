@@ -56,7 +56,7 @@ const Wrapper = styled.div<FlagProps>`
   text-transform: uppercase;
   padding: 0 ${props => props?.type === "pii" ? "20px" : "10px"};
   font-weight: bold;
-  border: 2px solid ${props => renderBorderColorByType(props)};
+  border: 1px solid ${props => renderBorderColorByType(props)};
   font-size: 12px;
   cursor: ${props => props?.type === "type" ? "auto" : "pointer"};
 `;

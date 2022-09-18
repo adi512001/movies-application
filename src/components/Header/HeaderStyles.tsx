@@ -62,6 +62,14 @@ const Seperator = styled.span`
 const HeaderTabs = styled(Tabs)`
   .MuiTabs-indicator {
     background-color: ${darkPurple};
+    height: 3px;
+  }
+  .MuiButtonBase-root {
+    text-transform: capitalize;
+  }
+  .MuiButtonBase-root.Mui-selected {
+    color: ${darkPurple};
+    font-weight: bold;
   }
 `;
 
