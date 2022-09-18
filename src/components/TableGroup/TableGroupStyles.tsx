@@ -19,6 +19,7 @@ const Content = styled.div`
   padding: 25px;
   display: grid;
   grid-template-columns: 2fr 0.5fr 4fr 1fr;
+  font-size: 14px;
 `;
 
 export { Wrapper, Header, Content };

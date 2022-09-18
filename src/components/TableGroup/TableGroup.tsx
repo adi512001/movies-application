@@ -6,6 +6,7 @@ import {
   faCaretRight,
   faCaretDown
 } from "@fortawesome/free-solid-svg-icons";
+import Flag from '../Flag/Flag';
 
 interface Props {
     title: string;
@@ -28,9 +29,9 @@ const TableGroup = ({ title, rows }: Props) => {
             {rows?.map(row => 
             <Content key={row.name}>
                 <span>{row.name}</span>
-                <span>{row.pii}</span>
-                <span>{row.masked}</span>
-                <span>{row.type}</span>
+                <Flag type="pii" boolValue={row.pii} />
+                <Flag type="masked" boolValue={row.masked} />
+                <Flag type="type" textValue={row.type} />
             </Content>
             )}
         </>}
