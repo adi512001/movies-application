@@ -31,12 +31,21 @@ const TableGroup = ({ title, group, rows, tabData, setTabData }: Props) => {
     const onArrowClick = () => {
         setVisible(!visible);
     }
-    const onFlagClick = (type: string) => {
+    const onFlagClick = (type: "pii" | "masked", name: string) => {
         const changedTabData = { ...tabData };
-        changedTabData[group as keyof typeof tabData] = 
-        { ...changedTabData[group as keyof typeof tabData], 
-            [type]: !changedTabData[group as keyof typeof tabData][type] 
+        // debugger;
+        let groupArray = tabData[group as keyof typeof tabData];
+        const arrayRowIndex = groupArray?.findIndex(row => row.name === name);
+        const arrayRow = groupArray[arrayRowIndex];
+        // remove item from array
+        groupArray?.splice(arrayRowIndex, 1);
+        let changedRow = { ...arrayRow };
+        if (changedRow) {
+            changedRow[type] = !arrayRow[type as keyof typeof arrayRow]
         }
+        // add changed item back to array
+        groupArray?.splice(arrayRowIndex, 0, changedRow);
+        changedTabData[group as keyof typeof tabData] = groupArray;
         setTabData(changedTabData);
     }
   return (
@@ -49,8 +58,8 @@ const TableGroup = ({ title, group, rows, tabData, setTabData }: Props) => {
             {rows?.map(row => 
             <Content key={row.name}>
                 <span>{row.name}</span>
-                <Flag type="pii" boolValue={row.pii} />
-                <Flag type="masked" boolValue={row.masked} />
+                <Flag type="pii" boolValue={row.pii} onFlagClick={type => onFlagClick(type, row.name)} />
+                <Flag type="masked" boolValue={row.masked} onFlagClick={type => onFlagClick(type, row.name)} />
                 <Flag type="type" textValue={row.type} />
             </Content>
             )}

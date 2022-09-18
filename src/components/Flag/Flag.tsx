@@ -5,9 +5,10 @@ interface Props {
     type: string;
     textValue?: string;
     boolValue?: boolean;
+    onFlagClick?: (type: "masked" | "pii") => void;
 }
 
-const Flag = ({ type, textValue, boolValue }: Props) => {
+const Flag = ({ type, textValue, boolValue, onFlagClick }: Props) => {
 
   const renderTitleByType = () => {
     if (type === "type") {
@@ -16,15 +17,16 @@ const Flag = ({ type, textValue, boolValue }: Props) => {
     return type;
   }
 
-  const onFlagClick = () => {
-    if (type === "type") {
-      return null;
+  const onClick = () => {
+    if ((type === "masked" || type === "pii") && onFlagClick ) {
+      let clickedType : "masked" | "pii" = type;
+      onFlagClick(clickedType);
     }
-    
+    return null;
   }
   
   return (
-    <Wrapper type={type} value={boolValue} onClick={onFlagClick}>
+    <Wrapper type={type} value={boolValue} onClick={onClick}>
         {renderTitleByType()}
     </Wrapper>
   );
