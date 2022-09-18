@@ -14,6 +14,21 @@ export type TableRow = {
 const RouteDetails = () => {
   const [activeTab, setActiveTab] = useState(0);
   const [piiOnly, setPiiOnly] = useState(false);
+  const [initialTabData, setInitialTabData] = useState<{
+    body: TableRow[];
+    headers: TableRow[];
+    queryParams: TableRow[];
+    urlParams: TableRow[];
+} | 
+{
+  body: TableRow[];
+  headers: TableRow[];
+}>({
+    body: [],
+    headers: [],
+    queryParams: [],
+    urlParams: [],
+  });
   const [tabData, setTabData] = useState<{
     body: TableRow[];
     headers: TableRow[];
@@ -32,8 +47,10 @@ const RouteDetails = () => {
 
   useEffect(() => {
     if (activeTab === 0) {
+      setInitialTabData(data?.request);
       return setTabData(data?.request);
     }
+    setInitialTabData(data?.response);
     setTabData(data?.response);
   }, [activeTab])
 
@@ -42,26 +59,20 @@ const RouteDetails = () => {
   };
 
   const onApplyClick = (searchVal: string) => {
-    let filteredTabData = { ...tabData };
+    let filteredTabData = { ...initialTabData };
     let group: keyof typeof tabData;
-    for (group in tabData) {
-      let filteredArray = tabData[group]?.filter(row => {
-        let shouldFilter = true;
+    for (group in initialTabData) {
+      let filteredArray = initialTabData[group]?.filter(row => {
+        let searchFilter = true;
+        let piiFilter = true;
         if (searchVal !== "") {
-          if (row.name?.includes(searchVal) || row.type?.includes(searchVal)) {
-            shouldFilter = true;
-          } else {
-            shouldFilter = false;
-          }
+          searchFilter = row.name?.toLowerCase().includes(searchVal.toLowerCase()) || 
+          row.type?.toLowerCase().includes(searchVal.toLowerCase());
         }
         if (piiOnly) {
-          if (row.pii) {
-            shouldFilter = true;
-          } else {
-            shouldFilter = false;
-          }
+          piiFilter = Boolean(row.pii);
         }
-        return shouldFilter;
+        return searchFilter && piiFilter;
       });
       filteredTabData[group] = filteredArray;
     }
