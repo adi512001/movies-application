@@ -58,8 +58,9 @@ const RouteDetails = () => {
     setPiiOnly(event.target.checked);
   };
 
-  const onApplyClick = (searchVal: string) => {
+  const onApplyClick = (searchVal: string, onReset: boolean) => {
     let filteredTabData = { ...initialTabData };
+    let pii = onReset ? false : piiOnly;
     let group: keyof typeof tabData;
     for (group in initialTabData) {
       let filteredArray = initialTabData[group]?.filter(row => {
@@ -69,7 +70,7 @@ const RouteDetails = () => {
           searchFilter = row.name?.toLowerCase().includes(searchVal.toLowerCase()) || 
           row.type?.toLowerCase().includes(searchVal.toLowerCase());
         }
-        if (piiOnly) {
+        if (pii) {
           piiFilter = Boolean(row.pii);
         }
         return searchFilter && piiFilter;
@@ -88,7 +89,12 @@ const RouteDetails = () => {
           activeTab={activeTab}
           setActiveTab={setActiveTab}
         />
-        <SearchBox piiOnly={piiOnly} handleChange={handleChange} onApplyClick={searchVal => onApplyClick(searchVal)} />
+        <SearchBox 
+          piiOnly={piiOnly} 
+          setPiiOnly={setPiiOnly}
+          handleChange={handleChange} 
+          onApplyClick={(searchVal, onReset) => onApplyClick(searchVal, onReset)} 
+        />
         <Table
           tabData={tabData}
         />
