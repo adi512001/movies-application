@@ -7,17 +7,37 @@ import {
   faCaretDown
 } from "@fortawesome/free-solid-svg-icons";
 import Flag from '../Flag/Flag';
+import { RequestData, ResponseData } from "../Table/Table";
 
 interface Props {
     title: string;
+    group: string;
     rows: TableRow[];
+    tabData: RequestData | ResponseData;
+    setTabData: React.Dispatch<React.SetStateAction<{
+        body: TableRow[];
+        headers: TableRow[];
+        queryParams: TableRow[];
+        urlParams: TableRow[];
+    } | {
+        body: TableRow[];
+        headers: TableRow[];
+    }>>;
 }
 
-const TableGroup = ({ title, rows }: Props) => {
+const TableGroup = ({ title, group, rows, tabData, setTabData }: Props) => {
     const [visible, setVisible] = useState(false);    
 
     const onArrowClick = () => {
         setVisible(!visible);
+    }
+    const onFlagClick = (type: string) => {
+        const changedTabData = { ...tabData };
+        changedTabData[group as keyof typeof tabData] = 
+        { ...changedTabData[group as keyof typeof tabData], 
+            [type]: !changedTabData[group as keyof typeof tabData][type] 
+        }
+        setTabData(changedTabData);
     }
   return (
     <Wrapper>

@@ -97,6 +97,7 @@ const RouteDetails = () => {
         />
         <Table
           tabData={tabData}
+          setTabData={setTabData}
         />
     </Wrapper>
   );

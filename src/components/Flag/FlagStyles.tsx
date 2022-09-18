@@ -58,6 +58,7 @@ const Wrapper = styled.div<FlagProps>`
   font-weight: bold;
   border: 2px solid ${props => renderBorderColorByType(props)};
   font-size: 12px;
+  cursor: ${props => props?.type === "type" ? "auto" : "pointer"};
 `;
 
 export { Wrapper };

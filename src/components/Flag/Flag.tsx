@@ -15,9 +15,16 @@ const Flag = ({ type, textValue, boolValue }: Props) => {
     }
     return type;
   }
+
+  const onFlagClick = () => {
+    if (type === "type") {
+      return null;
+    }
+    
+  }
   
   return (
-    <Wrapper type={type} value={boolValue} >
+    <Wrapper type={type} value={boolValue} onClick={onFlagClick}>
         {renderTitleByType()}
     </Wrapper>
   );
