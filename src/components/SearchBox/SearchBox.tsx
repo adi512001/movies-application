@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faSearch,
 } from "@fortawesome/free-solid-svg-icons";
+import { checkboxClasses } from "@mui/material/Checkbox";
 
 interface Props {
     piiOnly: boolean;
@@ -38,6 +39,9 @@ const SearchBox = ({ piiOnly, setPiiOnly, handleChange, onApplyClick }: Props) =
                   onChange={handleChange} 
                   sx={{ 
                    "&:hover": { backgroundColor: "#7b1fa20a" },
+                    '&.Mui-checked': {
+                      color: "#6A1B9A",
+                    },
                   }} 
                 />
                 <Text>Show PII only</Text>

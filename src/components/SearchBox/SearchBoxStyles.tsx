@@ -60,7 +60,7 @@ const PIIFilter = styled.div`
 const PIICheckbox = styled(Checkbox)`
   .MuiSvgIcon-root {
     font-size: 18px;
-    color: ${darkPurple}
+    // color: ${darkPurple};
   }
 `;
 
