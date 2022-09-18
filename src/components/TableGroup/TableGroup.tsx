@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Wrapper, Header, Content } from "./TableGroupStyles";
+import { Wrapper, Header, IconWrapper, Content } from "./TableGroupStyles";
 import { TableRow } from '../../containers/RouteDetails/RouteDetails';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -51,7 +51,12 @@ const TableGroup = ({ title, group, rows, tabData, setTabData }: Props) => {
   return (
     <Wrapper>
         <Header>
-            <FontAwesomeIcon icon={visible ? faCaretDown : faCaretRight} onClick={onArrowClick} />
+            <IconWrapper>
+                <FontAwesomeIcon 
+                    icon={visible ? faCaretDown : faCaretRight} 
+                    onClick={onArrowClick} 
+                />
+            </IconWrapper>
             <>{title}</>
         </Header>
         {visible && <>
