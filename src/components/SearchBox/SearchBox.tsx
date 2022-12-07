@@ -1,56 +1,33 @@
 import React, { useState } from 'react';
-import { Container, Wrapper, Search, Input, ApplyButton, Filters, PIIFilter, PIICheckbox, Text, ResetButton } from "./SearchBoxStyles";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Wrapper, Search, Icon, Input } from "./SearchBoxStyles";
 import {
   faSearch,
 } from "@fortawesome/free-solid-svg-icons";
-import { checkboxClasses } from "@mui/material/Checkbox";
 
 interface Props {
-    piiOnly: boolean;
-    setPiiOnly: React.Dispatch<React.SetStateAction<boolean>>;
-    handleChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
-    onApplyClick: (searchVal: string, onReset: boolean) => void;
+  search: (searchVal: string) => void
 }
 
-const SearchBox = ({ piiOnly, setPiiOnly, handleChange, onApplyClick }: Props) => {
+const SearchBox = ({ search }: Props) => {
   const [searchValue, setSearchValue] = useState('');
 
-  const onSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const onSearchValChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchValue(event?.target?.value);
   }
 
-  const onResetClick = () => {
-    setSearchValue("");
-    setPiiOnly(false);
-    onApplyClick("", true);
-  }
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) =>{
+    if (e.key === 'Enter') {
+      search(searchValue?.toLowerCase());
+    }
+  };
+
   return (
-    <Container>
-      <Wrapper>
-          <Search>
-              <FontAwesomeIcon icon={faSearch} color="#676767" />
-              <Input placeholder='Search' value={searchValue} onChange={onSearchChange} />
-          </Search>
-          <Filters>
-              <PIIFilter>
-                <PIICheckbox 
-                  checked={piiOnly} 
-                  onChange={handleChange} 
-                  sx={{ 
-                   "&:hover": { backgroundColor: "#7b1fa20a" },
-                    '&.Mui-checked': {
-                      color: "#6A1B9A",
-                    },
-                  }} 
-                />
-                <Text>Show PII only</Text>
-              </PIIFilter>
-              <ApplyButton onClick={() => onApplyClick(searchValue, false)}>Apply</ApplyButton>
-          </Filters>
-      </Wrapper>
-      <ResetButton onClick={onResetClick}>Reset Filter</ResetButton>
-    </Container>
+    <Wrapper>
+        <Search>
+          <Icon icon={faSearch} onClick={() => search(searchValue?.toLowerCase())} />
+          <Input placeholder='Search' value={searchValue} onChange={onSearchValChange} onKeyDown={handleKeyDown} />
+        </Search>
+    </Wrapper>
   );
 }
 
